@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+std::vector<int> createVectorFromInput() {
+    std::vector<int> v;
+    int x;
+
+    while (std::cin >> x && x != 0) {
+        v.push_back(x);
+    }
+
+    std::cout << "Size: " << v.size() << '\n';
+
+    for (int element : v) {
+        std::cout << element << ' ';
+    }
+
+    std::cout << '\n';
+
+    return v;
+}
+
+int main() {
+    std::vector<int> v = createVectorFromInput();
+
+    assert(v.size() == v.size());
+
+    return 0;
+}

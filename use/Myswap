@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <cassert>
+
+template <typename T>
+void mySwap(T& a, T& b) {
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int a = 1;
+    int b = 2;
+    mySwap(a, b);
+    assert(a == 2);
+    assert(b == 1);
+
+    double c = 1.5;
+    double d = 2.5;
+    mySwap(c, d);
+    assert(c == 2.5);
+    assert(d == 1.5);
+
+    std::string e = "Hello";
+    std::string f = "World";
+    mySwap(e, f);
+    assert(e == "World");
+    assert(f == "Hello");
+
+    return 0;
+}

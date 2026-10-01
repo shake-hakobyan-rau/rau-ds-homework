@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+template <typename T, int N>
+class FixedArray {
+private:
+    T arr[N];
+
+public:
+    void set(int index, T value) {
+        arr[index] = value;
+    }
+
+    T get(int index) {
+        return arr[index];
+    }
+
+    int size() {
+        return N;
+    }
+};
+
+int main() {
+    FixedArray<int, 3> numbers;
+
+    numbers.set(0, 10);
+    numbers.set(1, 20);
+    numbers.set(2, 30);
+
+    cout << numbers.get(0) << endl;
+    cout << numbers.get(1) << endl;
+    cout << numbers.get(2) << endl;
+    cout << numbers.size() << endl;
+
+    FixedArray<string, 2> words;
+
+    words.set(0, "Hello");
+    words.set(1, "World");
+
+    cout << words.get(0) << endl;
+    cout << words.get(1) << endl;
+
+    return 0;
+}

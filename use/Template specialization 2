@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+template <typename T>
+bool isEqual(const T& a, const T& b) {
+    return a == b;
+}
+
+template <>
+bool isEqual<const char*>(const char* const& a, const char* const& b) {
+    return strcmp(a, b) == 0;
+}
+
+int main() {
+    int a = 10;
+    int b = 10;
+
+    double c = 3.14;
+    double d = 2.71;
+
+    const char* str1 = "Hello";
+    const char* str2 = "Hello";
+
+    cout << isEqual(a, b) << endl;
+    cout << isEqual(c, d) << endl;
+    cout << isEqual(str1, str2) << endl;
+
+    return 0;
+}

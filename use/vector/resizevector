@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+template <typename T>
+void resizeVector(std::vector<T>& v, std::size_t newSize, const T& defaultValue) {
+    std::cout << "Before: " << v.size() << '\n';
+
+    v.resize(newSize, defaultValue);
+
+    std::cout << "After: " << v.size() << '\n';
+}
+
+int main() {
+    std::vector<int> v = {1, 2, 3};
+
+    resizeVector(v, 5, 0);
+
+    assert(v.size() == 5);
+    assert(v[3] == 0);
+    assert(v[4] == 0);
+
+    return 0;
+}

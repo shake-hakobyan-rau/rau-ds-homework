@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+template <typename T, typename Predicate>
+std::vector<T> filterVector(const std::vector<T>& v, Predicate predicate) {
+    std::vector<T> result;
+
+    for (const T& element : v) {
+        if (predicate(element)) {
+            result.push_back(element);
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    std::vector<int> v = {1, 2, 3, 4, 5, 6};
+
+    std::vector<int> result = filterVector(v, [](const int& x) {
+        return x % 2 == 0;
+    });
+
+    assert(result == std::vector<int>({2, 4, 6}));
+
+    return 0;
+}

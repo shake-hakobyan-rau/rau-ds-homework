@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+template <typename T1, typename T2>
+class Pair {
+private:
+    T1 first;
+    T2 second;
+
+public:
+    Pair(T1 first, T2 second) {
+        this->first = first;
+        this->second = second;
+    }
+
+    void print() {
+        cout << first << " " << second << endl;
+    }
+};
+
+int main() {
+    Pair<int, string> p1(10, "Hello");
+    Pair<double, char> p2(3.14, 'A');
+
+    p1.print();
+    p2.print();
+
+    return 0;
+}
