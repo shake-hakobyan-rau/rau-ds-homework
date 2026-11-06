@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+
+template <typename T>
+void printElement(const T& value) {
+    std::cout << value << '\n';
+}
+
+int main() {
+    printElement(10);
+    printElement(3.14);
+    printElement(std::string("Hello"));
+
+    return 0;
+}

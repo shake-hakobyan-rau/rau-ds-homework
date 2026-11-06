@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+template <typename T, int N, int M>
+class Matrix {
+private:
+    T arr[N][M];
+
+public:
+    void set(int row, int col, T value) {
+        arr[row][col] = value;
+    }
+
+    T get(int row, int col) {
+        return arr[row][col];
+    }
+
+    void print() {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                cout << arr[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+
+    Matrix operator+(const Matrix& other) {
+        Matrix result;
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                result.arr[i][j] = arr[i][j] + other.arr[i][j];
+            }
+        }
+
+        return result;
+    }
+};
+
+int main() {
+    Matrix<int, 2, 2> a;
+    Matrix<int, 2, 2> b;
+
+    a.set(0, 0, 1);
+    a.set(0, 1, 2);
+    a.set(1, 0, 3);
+    a.set(1, 1, 4);
+
+    b.set(0, 0, 5);
+    b.set(0, 1, 6);
+    b.set(1, 0, 7);
+    b.set(1, 1, 8);
+
+    Matrix<int, 2, 2> c = a + b;
+
+    a.print();
+    cout << endl;
+    b.print();
+    cout << endl;
+    c.print();
+
+    return 0;
+}

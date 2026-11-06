@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+void workWithEmptyVector() {
+    std::vector<int> v;
+
+    for (int i = 1; i <= 10; ++i) {
+        v.push_back(i);
+
+        std::cout << "Size: " << v.size() << '\n';
+        std::cout << "Capacity: " << v.capacity() << '\n';
+
+        assert(v.size() == i);
+        assert(v.back() == i);
+    }
+
+    for (int x : v) {
+        std::cout << x << ' ';
+    }
+
+    std::cout << '\n';
+}
+
+int main() {
+    workWithEmptyVector();
+
+    return 0;
+}
