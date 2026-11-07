@@ -92,6 +92,12 @@ std::cout << "test_peek() passed" << std::endl;
 int main() {
     std::cout << "Running Stack tests" << std::endl;
     test_push();
+    test_pop();
+    test_size();
+    test_capacity();
+    test_is_empty();
+    test_clear();
+    test_peek();
     std::cout << "All tests passed" << std::endl;
     return 0;
 }
