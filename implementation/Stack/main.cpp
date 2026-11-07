@@ -33,9 +33,62 @@ void test_push() {
     std::cout << "test_push passed" << std::endl;
 }
 
-// void test_pop() { ... }
+ void test_pop() {
+  Stack<int> s;
+  s.push(3);
+  s.push(5);
+  s.push(7);
+  s.pop();
+  assert(s.size() == 2);
+  assert(s.top() == 5);   
+ }
+std::cout << "test_pop passed" << std::endl;
 // void test_top() { ... }
+void test_top(){
+Stack<int> s;
 
+s.push(3);
+s.push(5);
+s.push(7);
+assert(s.top() == 7);
+std::cout << "test_top passed" << std::endl;    
+}
+void test_size(){
+Stack<int> s;
+s.push(3);
+s.push(5);
+s.push(7);
+assert(s.size() == 3);
+std::cout << "test_size passed" << std::endl; 
+}
+void test_capacity(){
+Stack<int> s;
+s.push(1);
+s.push(5);
+s.push(15);
+s.push(8);
+assert(s.capacity() == 4);
+std::cout << "test_capacity passed" << std::endl; 
+}
+void test_is_empty(){
+Stack<int> s;
+assert(s.is_empty() == true);
+}
+void test_clear(){
+Stack<int> s;
+s.push(5);
+s.clear();
+assert(s.size() == 0);
+std::cout << "test_clear() passed" << std::endl;
+}
+void test_peek(){
+Stack<int> s;
+s.push(3);
+s.push(9);
+s.push(5);
+assert(s.peek() == 5);
+std::cout << "test_peek() passed" << std::endl;
+}
 int main() {
     std::cout << "Running Stack tests" << std::endl;
     test_push();
