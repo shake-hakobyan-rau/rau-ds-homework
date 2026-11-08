@@ -24,7 +24,7 @@ public:
 
     explicit Vector(int s, T value = T()) :
         data(new T[s]), size(s), capacity(s) {
-        for(int i = 0; i < size; i++) { // Исправлено: начинаем с 0
+        for(int i = 0; i < size; i++) { 
             data[i] = value;
         }
     }
@@ -41,7 +41,7 @@ public:
 
     Vector& operator=(const Vector& other) {
         if(this == &other)
-            return *this; // Исправлено: return *this
+            return *this; 
 
         delete[] data;
         size = other.size;
@@ -58,7 +58,7 @@ public:
             int new_cap = (capacity == 0) ? 1 : capacity * 2;
             _resize_capacity(new_cap);
         }
-        data[size++] = value; // Исправлено: присваивание вместо ==
+        data[size++] = value; 
     }
 
     T& operator[](int index) {
@@ -143,7 +143,6 @@ public:
         size = 0;
     }
 
-    // Добавленные методы, которые вызывались в тетах:
     void insert(int index, const T& value) {
         if (index < 0 || index > size) {
             throw std::out_of_range("Index out of range");
@@ -216,7 +215,6 @@ void test_destructor() {
     Vector<int> v;
     v.push_back(10);
     v.push_back(20);
-    // Убрано дублирующее объявление Vector<int> v; и исправлены синтаксические ошибки
     std::cout << "passed" << std::endl;
 }
 
