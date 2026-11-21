@@ -2,6 +2,7 @@
 #define BINARYSEARCHTREE_H
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 template <typename T>
@@ -36,12 +37,10 @@ private:
         if (node == nullptr)
             return nullptr;
 
-        if (value < node->data) {
+        if (value < node->data)
             node->left = remove_recursive(node->left, value);
-        }
-        else if (value > node->data) {
+        else if (value > node->data)
             node->right = remove_recursive(node->right, value);
-        }
         else {
             if (node->left == nullptr) {
                 Node* temp = node->right;
@@ -49,7 +48,8 @@ private:
                 _size--;
                 return temp;
             }
-            else if (node->right == nullptr) {
+
+            if (node->right == nullptr) {
                 Node* temp = node->left;
                 delete node;
                 _size--;
@@ -57,6 +57,7 @@ private:
             }
 
             Node* temp = node->right;
+
             while (temp->left != nullptr)
                 temp = temp->left;
 
@@ -90,10 +91,10 @@ private:
         if (node == nullptr)
             return 0;
 
-        int leftHeight = height_recursive(node->left);
-        int rightHeight = height_recursive(node->right);
-
-        return 1 + max(leftHeight, rightHeight);
+        return 1 + max(
+            height_recursive(node->left),
+            height_recursive(node->right)
+        );
     }
 
     void inorder_recursive(Node* node) const {
@@ -141,7 +142,8 @@ public:
         clear();
     }
 
-    BinarySearchTree(const BinarySearchTree& other) : _root(nullptr), _size(other._size) {
+    BinarySearchTree(const BinarySearchTree& other)
+        : _root(nullptr), _size(other._size) {
         _root = copy_recursive(other._root);
     }
 
