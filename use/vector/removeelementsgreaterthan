@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+int removeElementsGreaterThan(std::vector<int>& v, int threshold) {
+    int count = 0;
+
+    while (!v.empty() && v.back() > threshold) {
+        v.pop_back();
+        ++count;
+    }
+
+    return count;
+}
+
+int main() {
+    std::vector<int> v = {1, 2, 3, 5, 7, 9};
+
+    int result = removeElementsGreaterThan(v, 5);
+
+    assert(result == 2);
+    assert(v == std::vector<int>({1, 2, 3, 5}));
+
+    return 0;
+}

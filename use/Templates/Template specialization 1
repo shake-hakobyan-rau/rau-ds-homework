@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+void printValue(T value) {
+    cout << value << endl;
+}
+
+template <>
+void printValue<bool>(bool value) {
+    cout << (value ? "true" : "false") << endl;
+}
+
+template <>
+void printValue<char*>(char* value) {
+    cout << "\"" << value << "\"" << endl;
+}
+
+int main() {
+    int a = 10;
+    double b = 3.14;
+    bool c = true;
+    char text[] = "Hello";
+
+    printValue(a);
+    printValue(b);
+    printValue(c);
+    printValue(text);
+
+    return 0;
+}

@@ -1,0 +1,36 @@
+#include <iostream>
+#include <algorithm>
+#include <climits>
+using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int x) {
+        val = x;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+int findMax(TreeNode* root) {
+    if (root == nullptr) {
+        return INT_MIN;
+    }
+
+    return max(root->val, max(findMax(root->left), findMax(root->right)));
+}
+
+int findMin(TreeNode* root) {
+    if (root == nullptr) {
+        return INT_MAX;
+    }
+
+    return min(root->val, min(findMin(root->left), findMin(root->right)));
+}
+
+int main() {
+    return 0;
+}

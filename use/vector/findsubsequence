@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <cassert>
+
+int findSubsequence(const std::vector<int>& v, const std::vector<int>& subsequence) {
+    if (subsequence.empty()) {
+        return 0;
+    }
+
+    if (subsequence.size() > v.size()) {
+        return -1;
+    }
+
+    for (std::size_t i = 0; i <= v.size() - subsequence.size(); ++i) {
+        bool found = true;
+
+        for (std::size_t j = 0; j < subsequence.size(); ++j) {
+            if (v[i + j] != subsequence[j]) {
+                found = false;
+                break;
+            }
+        }
+
+        if (found) {
+            return static_cast<int>(i);
+        }
+    }
+
+    return -1;
+}
+
+int main() {
+    std::vector<int> v = {1, 2, 3, 4, 5};
+    std::vector<int> subsequence = {3, 4};
+
+    assert(findSubsequence(v, subsequence) == 2);
+
+    return 0;
+}
