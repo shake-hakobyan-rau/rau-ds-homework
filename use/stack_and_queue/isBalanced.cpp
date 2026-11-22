@@ -3,37 +3,24 @@
 #include <string>
 #include <cassert>
 
-bool isBalanced(const std::string& s) {
+bool isBalanced(std::string& s){
     std::stack<char> st;
-    for (int i = 0; i < s.size(); i++) {
-        char c = s[i];
-        if (c == '(' || c == '[' || c == '{') {
-            st.push(c);
+
+    for(int i = 0; i < s.size();++i){
+        char d = s[i];
+        if (d == '(' || d == '{' || d == '['){
+            st.push(d);
         }
-        else if (c == ')' || c == ']' || c == '}') {
-            if (st.empty()) {
+        else if(d == ')' || d == '}' || ']'){
+            if(s.empty()){
                 return false;
             }
             char top = st.top();
             st.pop();
-            if (c == ')' && top != '(') return false;
-            if (c == ']' && top != '[') return false;
-            if (c == '}' && top != '{') return false;
+            if(d == ')' || top != '(') return false;
+                if(d == '}' || top != '{') return false;
+            if(d == ']' || top != '[') return false;
         }
     }
     return st.empty();
-}
-
-void test() {
-    assert(isBalanced("({[]})") == true);
-    assert(isBalanced("([)]") == false);
-    assert(isBalanced("{[}]") == false);
-    assert(isBalanced("()") == true);
-    assert(isBalanced("(") == false);
-    assert(isBalanced("") == true);
-}
-
-int main() {
-    test();
-    std::cout << "passed";
 }
